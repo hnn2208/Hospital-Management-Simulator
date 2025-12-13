@@ -10,7 +10,7 @@ public static class Patient {
         this.id = id;
         this.name = name;
         this.severity = severity;
-        this.age = age:
+        this.age = age;
     }
 
     //we cn add a method here to display the paitent's inf
