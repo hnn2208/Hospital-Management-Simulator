@@ -22,7 +22,7 @@ public static class Patient {
     }
 }
 // and I will this method (to run the program)
-public static void main (String[] args) {
+public static void main (String[] args){
     Patient patient1 = new Patient(101, "Huda Mohamed", -8, 25);
 
 
