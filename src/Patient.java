@@ -1,4 +1,4 @@
-public static class Patient {
+public class Patient {
 
 
     int id;
