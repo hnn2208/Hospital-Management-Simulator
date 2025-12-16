@@ -53,7 +53,7 @@ public class TreatmentQueue {
     }
 
     public void printQueue() {
-        Node current = front; 
+        Node current = front;
 
         while (current != null) {
             System.out.println(
