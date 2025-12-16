@@ -12,24 +12,7 @@ public static class Patient {
         this.severity = severity;
         this.age = age;
     }
-
-    //we cn add a method here to display the paitent's inf
-    public void displayInfo() {
-        System.out.println("patient ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Severity: " + severity);
-        System.out.println("Age: " + age);
-    }
 }
-// and I will this method (to run the program)
-public static void main (String[] args){
-    Patient patient1 = new Patient(101, "Huda Mohamed", -8, 25);
-
-
-    patient1.displayInfo();
-
-    }
-
 
 
 
