@@ -1,14 +1,10 @@
 public class DischargeRecord {
     int patientId;
-    long dischargeTime;
+    long dischargeTimestamp;
 
-    public DischargeRecord(int patientId){
+    public DischargeRecord(int patientId) {
         this.patientId = patientId;
-        this.dischargeTime = System.currentTimeMillis();
-    }
-
-    @Override
-    public String toString() {
-        return "Discharge{patientId=" + patientId + ", time=" + dischargeTime +'}';
+        // This records the exact time they were discharged
+        this.dischargeTimestamp = System.currentTimeMillis();
     }
 }

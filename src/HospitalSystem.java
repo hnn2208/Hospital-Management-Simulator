@@ -1,20 +1,11 @@
 import java.util.HashMap;
 
 public class HospitalSystem {
-
-    PatientList patientList;
-    TreatmentQueue normalQueue;
-    TreatmentQueue priorityQueue;
-    DischargeStack dischargeStack;
-    HashMap<Integer, Patient> patientMap;
-
-    public HospitalSystem() {
-        patientList = new PatientList();
-        normalQueue = new TreatmentQueue();
-        priorityQueue = new TreatmentQueue();
-        dischargeStack = new DischargeStack();
-        patientMap = new HashMap<>();
-    }
+    PatientList patientList = new PatientList();
+    TreatmentQueue normalQueue = new TreatmentQueue();
+    TreatmentQueue priorityQueue = new TreatmentQueue();
+    DischargeStack dischargeStack = new DischargeStack();
+    HashMap<Integer, Patient> patientMap = new HashMap<>();
 
     public void addPatient(Patient p) {
         patientList.addPatient(p);
@@ -30,28 +21,29 @@ public class HospitalSystem {
     }
 
     public void processTreatment() {
-        TreatmentRequest request;
-
-        if(priorityQueue.size() > 0) {
-            request = priorityQueue.dequeue();
-        } else {
-            request = normalQueue.dequeue();
+        TreatmentRequest req = null;
+        if (priorityQueue.size() > 0) {
+            req = priorityQueue.dequeue();
+        } else if (normalQueue.size() > 0) {
+            req = normalQueue.dequeue();
         }
-        if (request != null) {
-            dischargeStack.push(new DischargeRecord(request.patientId));
+
+        if (req != null) {
+            Patient p = patientMap.get(req.patientId);
+            if (p != null) {
+                System.out.println("SUCCESS: Now treating " + p.name + " (ID: " + p.id + ")");
+                dischargeStack.push(new DischargeRecord(p.id));
+            }
+        } else {
+            System.out.println("Wait: No patients in the queue.");
         }
     }
+
     public void printSystemState() {
-        System.out.println("Patients:");
-        patientList.printList();
-
-        System.out.println("\nNormal Queue;");
-        normalQueue.printQueue();
-
-        System.out.println("nPriority Queue:");
-        priorityQueue.printQueue();
-
-        System.out.println("\nDischarge Stack:");
-        dischargeStack.printStack();
+        System.out.println("\n--- Final Summary ---");
+        System.out.println("Total patients registered: " + patientMap.size());
+        System.out.println("Remaining in Priority Queue: " + priorityQueue.size());
+        System.out.println("Remaining in Normal Queue: " + normalQueue.size());
+        System.out.println("Total Discharged: " + dischargeStack.size());
     }
 }

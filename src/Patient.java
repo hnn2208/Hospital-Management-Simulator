@@ -1,9 +1,7 @@
 public class Patient {
-
-
     int id;
     String name;
-    int severity; // it will be 1 low and -10 high
+    int severity;
     int age;
 
     public Patient(int id, String name, int severity, int age) {
@@ -13,10 +11,6 @@ public class Patient {
         this.age = age;
     }
 }
-
-
-
-
 
 
 
