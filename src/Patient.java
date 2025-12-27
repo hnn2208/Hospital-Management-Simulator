@@ -1,7 +1,8 @@
+// i created this simple class to sort the patient's infos
 public class Patient {
-    int id;
+    int id; // unique id
     String name;
-    int severity;
+    int severity; // 1 to 10 scale
     int age;
 
     public Patient(int id, String name, int severity, int age) {
@@ -11,6 +12,5 @@ public class Patient {
         this.age = age;
     }
 }
-
 
 
