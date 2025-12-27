@@ -1,10 +1,11 @@
 public class DischargeRecord {
+    // i made this basic data for the record
     int patientId;
-    long dischargeTimestamp;
+    long dischargeTime;
 
     public DischargeRecord(int patientId) {
         this.patientId = patientId;
-        // This records the exact time they were discharged
-        this.dischargeTimestamp = System.currentTimeMillis();
+        // i made this because it captures the exact moment they leave
+        this.dischargeTime = System.currentTimeMillis();
     }
 }
