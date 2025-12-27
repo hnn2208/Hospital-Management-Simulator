@@ -1,9 +1,11 @@
 public class TreatmentRequest {
     int patientId;
-    boolean priority;
+    long arrivalTime;
+    boolean isUrgent;
 
-    public TreatmentRequest(int patientId, boolean priority) {
+    public TreatmentRequest(int patientId, boolean isUrgent) {
         this.patientId = patientId;
-        this.priority = priority;
+        this.isUrgent = isUrgent;
+        this.arrivalTime = System.currentTimeMillis();
     }
 }
