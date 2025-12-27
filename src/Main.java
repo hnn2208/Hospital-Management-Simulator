@@ -1,29 +1,27 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("--- Hospital Program Starting ---");
+        HospitalSystem myHospital = new HospitalSystem();
 
-        HospitalSystem system = new HospitalSystem();
+        // i am Adding Patients now
+        myHospital.addPatientToSystem(101, "Fatma", 9, 30);
+        myHospital.addPatientToSystem(102, "Huda", 4, 12);
+        myHospital.addPatientToSystem(103, "Malik", 10, 20);
+        myHospital.addPatientToSystem(104, "Mohamed", 4, 23);
+        myHospital.addPatientToSystem(105,"A Rahman", 2, 15);
+        myHospital.addPatientToSystem(107, "Rayan", 3,16);
+        // 2. Sorting
+        myHospital.sortBySeverity();
+        myHospital.patients.printList();
 
-        // here will add patients
-        system.addPatient(new Patient(1, "Fatma", 5, 20));
-        system.addPatient(new Patient(2, "Huda", 8, 10));
-        system.addPatient(new Patient(3, "Malik", 4, 30));
-        system.addPatient(new Patient(4, "Rayan", 7, 22));
-        system.addPatient(new Patient(5, "Hana", 2, 23));
+        // 3. im adding Requests
+        myHospital.makeRequest(102, false); // Huda is normal
+        myHospital.makeRequest(103, true);  // Malik is emergency
 
-        // here it will add requests
-        system.addTreatmentRequest(new TreatmentRequest(1, false));
-        system.addTreatmentRequest(new TreatmentRequest(2, false));
-        system.addTreatmentRequest(new TreatmentRequest(3, true));  // Malik
-        system.addTreatmentRequest(new TreatmentRequest(4, true));  // Rayan
-        system.addTreatmentRequest(new TreatmentRequest(5, false));
+        // 4. Process (Malik should go first because of his Priority)
+        myHospital.processNext();
+        myHospital.processNext();
 
-        // we will the outputs in here!
-        System.out.println("\n--- Processing Queue ---");
-        system.processTreatment(); // Treats Malik first (Priority)
-        system.processTreatment(); // Treats Rayan second (Priority)
-
-        system.printSystemState();
-        System.out.println("\n--- Program Finished ---");
+        // 5. Checking  History
+        myHospital.history.printStack();
     }
 }
